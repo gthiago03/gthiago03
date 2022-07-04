@@ -43,11 +43,18 @@ i=1;
         gravrate(ifacont,1) = n*iK*fg';
         
         if(bedge(ifacont,5) > 200)
+            
+            kgradpx = Klef(1,1)*vec_gravface(ifacont,1)+Klef(1,2)*vec_gravface(ifacont,2);
+            kgradpy = Klef(2,1)*vec_gravface(ifacont,1)+Klef(2,2)*vec_gravface(ifacont,2);
+            
             kgx = Klef(1,1)*vec_gravface(ifacont,1)+Klef(1,2)*vec_gravface(ifacont,2);
             kgy = Klef(2,1)*vec_gravface(ifacont,1)+Klef(2,2)*vec_gravface(ifacont,2);
           
             
-            gravrate(ifacont,1) = abs(normals(ifacont,1))*kgx + abs(normals(ifacont,2))*kgy;
+            flux_ex_du = abs(normals(ifacont,1))*kgradpx + abs(normals(ifacont,2))*kgradpy;
+            flux_ex_g = abs(normals(ifacont,1))*kgx + abs(normals(ifacont,2))*kgy;
+            
+            gravrate(ifacont,1) = flux_ex_g;
 
             
             %if(centface(ifacont,2)==0)
