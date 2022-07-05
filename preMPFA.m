@@ -24,7 +24,7 @@ function [transmvecleft,transmvecright,knownvecleft,knownvecright,storeinv,...
     pointedge,bodyterm,Hesq,Kde,Kn,Kt,Ded,V,N,kmap,nflag,parameter,weightDMP,...
     nflagface,p_old,contnorm,gravelem,gravpoint,gravface] = preMPFA(kmap,klb)
 %Define global parameters:
-global pmethod elem coord keygravity gravresult gravrate bedge inedge 
+global pmethod elem coord keygravity gravresult gravrate bedge inedge flag
 
 %Obtain the coordinate of both CENTER and AUXILARY nodes of elements which
 %constitute the mash. The AREA of each element is also calculated.
@@ -182,8 +182,10 @@ switch char(pmethod)
             % Thiago
             %Gt = jtgs_gravitationalterm(overedgecoord, kmap);
             % Fernando
-            [vec_gravelem,vec_gravface,gravelem,gravpoint,gravface]=PLUG_Gfunction;
+            [vec_gravelem,vec_gravface,vec_gravpoint,gravelem,gravpoint,gravface]=PLUG_Gfunction;
             [gravresult, gravrate]=gravitation(kmap,vec_gravelem,vec_gravface);
+            nflagface = standard_discr(kmap,vec_gravelem,vec_gravface,vec_gravpoint,nflagface);
+            flag = nflagface;
             %Gt=-Gt;
         end
         

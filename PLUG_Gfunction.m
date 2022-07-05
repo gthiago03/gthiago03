@@ -1,9 +1,10 @@
-function [vec_gravelem,vec_gravface,gravelem,gravpoint,gravface]=PLUG_Gfunction
+function [vec_gravelem,vec_gravface,vec_gravpoint,gravelem,gravpoint,gravface]=PLUG_Gfunction
 %function [grav]=PLUG_Gfunction
 global  numcase g elem centelem centface bedge inedge coord u0
 
 vec_gravelem=zeros(size(elem,1),3);
 vec_gravface=zeros(size(bedge,1)+size(inedge,1),1);
+vec_gravpoint=zeros(size(coord,1),1);
 gravelem=zeros(size(elem,1),1);
 gravpoint=zeros(size(coord,1),1);
 gravface=zeros(size(bedge,1)+size(inedge,1),1);
@@ -110,6 +111,7 @@ switch numcase
             vec_gravelem(i,1)=cos(x)*cos(y);
             vec_gravelem(i,2)=-sin(x)*sin(y);
             
+            
             % gravity through the edge element
             
             gravelem(i,1)=-sin(x)*cos(y)-u0;
@@ -123,6 +125,10 @@ switch numcase
             x1 = coord(j,1);
             y1 = coord(j,2);
             % parametro segundo  Starnoni
+            
+            % gravity vector 
+            vec_gravpoint(j,1)=cos(x1)*cos(y1);
+            vec_gravpoint(j,2)=-sin(x1)*sin(y1);
 
             % solucao analitica
             gravpoint(j,1)= -sin(x1)*cos(y1)-u0;

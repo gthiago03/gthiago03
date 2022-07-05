@@ -31,7 +31,7 @@ for ifacont=1:size(bedge,1)
         r=find(x==1);
         
         % calcula o fluxo na face "ifacelef2"
-        fluxoN=normcont*bcflag(r,2)+gravresult(ifacont,1);
+        fluxoN=normcont*bcflag(r,2);%+gravresult(ifacont,1);
        
         % "faceoposto" é aquele face oposto ao "ifacont"
         if faceoposto<size(bedge,1) || faceoposto==size(bedge,1)
@@ -53,7 +53,7 @@ for ifacont=1:size(bedge,1)
                 
                 x=bcflag(:,1)==bedge(faceoposto,5);
                 r=find(x==1);
-                fluxOpost=normcontopost*bcflag(r,2)+gravresult(faceoposto,1);
+                fluxOpost=normcontopost*bcflag(r,2);%+gravresult(faceoposto,1);
                 
                 if auxfacelef1==faceoposto
                     atualksO=parameter(1,1,faceoposto);

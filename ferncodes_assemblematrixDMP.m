@@ -1,12 +1,12 @@
 function [M,I]=ferncodes_assemblematrixDMP(p,pinterp,gamma,parameter,weightDMP,mobility,gravelem,gravpoint,gravface)
-global inedge coord bedge bcflag elem phasekey keygravity gravresult gravrate
+global inedge coord bedge bcflag elem phasekey keygravity gravresult gravrate flag
 bedgesize = size(bedge,1);
 valuemin=1e-16;
 I=zeros(size(elem,1),1);
 %M=zeros(size(elem,1),size(elem,1));
 M=sparse(size(elem,1),size(elem,1));
 
-I = I + gravresult;
+%I = I + gravresult;
 
 for ifacont=1:size(bedge,1)
     
