@@ -184,9 +184,16 @@ switch char(pmethod)
             % Fernando
             [vec_gravelem,vec_gravface,vec_gravpoint,gravelem,gravpoint,gravface]=PLUG_Gfunction;
             [gravresult, gravrate]=gravitation(kmap,vec_gravelem,vec_gravface);
-            nflagface = standard_discr(kmap,vec_gravelem,vec_gravface,vec_gravpoint,nflagface);
+            [nflagface] = standard_discr(kmap,vec_gravelem,vec_gravface,vec_gravpoint,nflagface);
             flag = nflagface;
             %Gt=-Gt;
+            nflag(5,2) = (nflagface(1,2)+nflagface(2,2))/2;
+            nflag(6,2) = (nflagface(2,2)+nflagface(3,2))/2;
+            nflag(7,2) = (nflagface(3,2)+nflagface(4,2))/2;
+            nflag(11,2) = (nflagface(9,2)+nflagface(10,2))/2;
+            nflag(12,2) = (nflagface(10,2)+nflagface(11,2))/2;
+            nflag(13,2) = (nflagface(11,2)+nflagface(12,2))/2;
+            
         end
         
 end  %End of SWITCH

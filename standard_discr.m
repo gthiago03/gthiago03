@@ -42,8 +42,18 @@ function [nflagface]=gravitation(kmap,vec_gravelem, vec_gravface, vec_gravpoint,
                 nflagface(ifacont,2) = flux_ex - flux_ex_g;
             end
             
+           % if(coord(ifacont,2)==0)
+           %     nflag(ifacont,2) = (flux_ex - flux_ex_g)*(-1);
+            
         end
         
     end
     
 end
+
+% nflag(5,2) = (nflagface(1,2)+nflagface(2,2))/2;
+% nflag(6,2) = (nflagface(2,2)+nflagface(3,2))/2;
+% nflag(7,2) = (nflagface(3,2)+nflagface(4,2))/2;
+% nflag(11,2) = (nflagface(9,2)+nflagface(10,2))/2;
+% nflag(12,2) = (nflagface(10,2)+nflagface(11,2))/2;
+% nflag(13,2) = (nflagface(11,2)+nflagface(12,2))/2;

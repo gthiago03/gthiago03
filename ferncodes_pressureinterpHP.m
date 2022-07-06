@@ -1,5 +1,5 @@
 function [pressurinterp]=ferncodes_pressureinterpHP(p,nflagface,parameter,weightDMP)
-global inedge coord bedge bcflag gravresult
+global inedge coord bedge bcflag gravresult keygravity
 
 
 pressurinterp=zeros(size(inedge,1)+size(bedge,1),1);
@@ -82,6 +82,13 @@ for ifacont=1:size(bedge,1)
                 pressurinterp(ifacont,1)= termo1*p(lef)+termo2;
                 
             end
+            
+            
+        if strcmp(keygravity,'y')
+            pressurinterp(ifacont,1) = nflagface(ifacont,2);
+        end    
+            
+            
         else
             % caso III. Quando a face oposto pertence ao interior da
             % malha
@@ -119,6 +126,8 @@ for ifacont=1:size(bedge,1)
     else
         pressurinterp(ifacont,1)= nflagface(ifacont,2);
     end
+    
+    
     
 end
 end

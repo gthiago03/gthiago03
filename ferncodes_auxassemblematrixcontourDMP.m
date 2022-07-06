@@ -26,7 +26,12 @@ else
     
     M(ielem,ielem)=M(ielem,ielem)+ Transmicont*auxmobility;
     
-    I(ielem)=I(ielem)+ Transmicont*pinterp(auxiface)*auxmobility;
+    %if(bedge(ielem,5)>200)    
+    %    I(ielem)=I(ielem) - Transmicont*pinterp(auxiface)*auxmobility;
+    %else
+        I(ielem)=I(ielem) + Transmicont*pinterp(auxiface)*auxmobility;
+    %end
+    
 end
 
 end
