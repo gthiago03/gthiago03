@@ -25,13 +25,13 @@ for ifacont=1:size(bedge,1)
     % calcula a norma da face IJ
     normcont=norm(coord(bedge(ifacont,1),:)-coord(bedge(ifacont,2),:));
     
-    if (bedge(ifacont,5)>200 && strcmp(keygravity,'n'))
+    if (bedge(ifacont,5)>200) %&& strcmp(keygravity,'n'))
         % atribui os flag do fluxo prescrito 
         x=bcflag(:,1)==bedge(ifacont,5);
         r=find(x==1);
         % atribui o valor do fluxo prescrito
         I(lef)=I(lef)- normcont*bcflag(r,2);%-gravresult(ifacont,1);
-    elseif(bedge(ifacont,5)<=200 || strcmp(keygravity,'y'))
+    elseif(bedge(ifacont,5)<=200) %|| strcmp(keygravity,'y'))
         % calculo da mobilidade
         auxmobility=mobonface;
         % faces que conformam os eixos auxiliares
