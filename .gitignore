@@ -1,3 +1,6 @@
 
 .tmp.driveupload/
-*\desktop.ini
+*.ini
+gmsh.exe
+*.vtk
+*.ini
